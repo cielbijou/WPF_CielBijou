@@ -1,0 +1,160 @@
+﻿<UserControl x:Class="CielBijou.View.PromotionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CielBijou.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="Background" Value="WhiteSmoke" />
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="1"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="1"/>
+        </Style>
+
+        <Style x:Key="BoutonBarreMenu" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="Margin" Value="5,0" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="LightGray" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="Gray" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="451"/>
+        </Grid.RowDefinitions>
+
+        <ToolBar Grid.Row="0" Width="1000" Background="#F3F3F3" BorderBrush="#D4D4D4" BorderThickness="0,0,0,1">
+
+            <Button x:Name="ButtonAjouter" Style="{StaticResource BoutonBarreMenu}" Click="ButtonAjouter_Click">
+                <StackPanel>
+                    <Image Source="/Resources/Ajouter.png" Height="30" />
+                    <Label Content="Ajouter" FontSize="10"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="ButtonModifier" Style="{StaticResource BoutonBarreMenu}" Click="ButtonModifier_Click">
+                <StackPanel>
+                    <Image Source="/Resources/Modifier.png" Height="30" />
+                    <Label Content="Modifer" FontSize="10"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="ButtonSupprimer" Style="{StaticResource BoutonBarreMenu}" Click="ButtonSupprimer_Click">
+                <StackPanel>
+                    <Image Source="/Resources/poubelle.png" Height="30" />
+                    <Label Content="Supprimer" FontSize="10"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="ButtonValider" Visibility="Hidden" Style="{StaticResource BoutonBarreMenu}" Click="ButtonValider_Click">
+                <StackPanel>
+                    <Image Source="/Resources/Enregistrer.png" Height="30" />
+                    <Label Content="Valider" FontSize="10"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="ButtonAnnuler" Visibility="Hidden" Style="{StaticResource BoutonBarreMenu}" Click="ButtonAnnuler_Click">
+                <StackPanel>
+                    <Image Source="/Resources/Annuler.png" Height="30" />
+                    <Label Content="Annuler" FontSize="10"/>
+                </StackPanel>
+            </Button>
+        </ToolBar>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <DataGrid x:Name="DataGridPromotions" HorizontalAlignment="Left" 
+              Grid.Row="1" Width="240" IsReadOnly="True"
+              CanUserAddRows="False" AutoGenerateColumns="False" SelectionChanged="DataGridPromotions_SelectionChanged">
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding id}" Width="20"/>
+                    <DataGridTextColumn Header="Categorie" Binding="{Binding une_categorie_id}" Width="60"/>
+                    <DataGridTextColumn Header="Date début" Binding="{Binding date_debut_promo}" Width="70"/>
+                    <DataGridTextColumn Header="Date Fin" Binding="{Binding date_fin_promo}" Width="60"/>
+                    <DataGridTextColumn Header="Remise" Binding="{Binding remise_promo}" Width="40"/>
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+            <Grid DataContext="{Binding ElementName=DataGridPromotions, Path=SelectedItem}" x:Name="GrillePromotionq" IsEnabled="False" Grid.ColumnSpan="2" Margin="245,0,0,0" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="58*"/>
+                    <ColumnDefinition Width="127*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label x:Name="LabelId" Content="Id" FontSize="15" Height="34" FontWeight="Bold"  VerticalAlignment="Center" Width="24" HorizontalAlignment="Center"/>
+                <TextBox x:Name="TextBoxId" Text="{Binding id, Mode=OneWay}" Margin="10,10,0,10" Grid.Column="1" Grid.Row="0" FontSize="15" MinWidth="60" MaxWidth="60" HorizontalAlignment="Left" Width="60" />
+
+                <Label x:Name="LabelLibelle" Grid.Row="1" Content="categorie" FontSize="15" Height="34" FontWeight="Bold" VerticalAlignment="Center" Width="82" HorizontalAlignment="Center"/>
+                <TextBox x:Name="TextBoxLibelle" Grid.Column="1" Grid.Row="1" Text="{Binding une_categorie_id, Mode=OneWay}" Margin="10,10,0,10" FontSize="15" MinWidth="400" MaxWidth="400" HorizontalAlignment="Left" Width="400"/>
+                <ComboBox x:Name="ComboBoxCategorie"  
+      SelectedValuePath="Content"
+      Grid.Column="1" Grid.Row="1" 
+      MinWidth="150" MaxWidth="150" VerticalAlignment="Center" 
+      HorizontalAlignment="Left" Margin="10,6.5,0,11" 
+      FontSize="15" Width="200" Height="25"
+      IsEnabled="False"
+          Visibility="Hidden">
+                    <ComboBoxItem Content='Bagues'/>
+                    <ComboBoxItem Content='Collier'/>
+                    <ComboBoxItem Content='Bracelets'/>
+                </ComboBox>
+                <Label Grid.Row="2" Content="Date début promotion" FontSize="15" Height="50" Width="174" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <DatePicker Grid.Row="2" Grid.Column="1" x:Name="DatePickerDebutPromo" Text="{Binding date_debut_promo, Mode=OneWay}"/>
+
+                <Label Grid.Row="3" Content="Date fin promotion" FontSize="15" Height="50" Width="154" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,4,0,0" Grid.RowSpan="2"/>
+                <DatePicker Grid.Row="3" Grid.Column="1" x:Name="DatePickerFinPromo" Text="{Binding date_fin_promo, Mode=OneWay}"/>
+                
+                <Label Grid.Row="4" Content="Remise promotion" FontSize="15" Height="50" Width="154" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,4,0,0" Grid.RowSpan="2"/>
+                <TextBox x:Name="TextBoxRemise" Grid.Column="1" Grid.Row="4" Text="{Binding remise_promo, Mode=OneWay}" Margin="10,10,0,10" FontSize="15" MinWidth="400" MaxWidth="400" HorizontalAlignment="Left" Width="400"/>
+            </Grid>
+
+
+
+
+        </Grid>
+
+
+
+    </Grid>
+</UserControl>

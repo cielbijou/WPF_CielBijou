@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="cielbijouModelStoreContainer" CdmEntityContainer="cielbijouEntities2">
+    <EntitySetMapping Name="categorie">
+      <EntityTypeMapping TypeName="cielbijouModel.categorie">
+        <MappingFragment StoreEntitySet="categorie">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="libelle_cat" ColumnName="libelle_cat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="client">
+      <EntityTypeMapping TypeName="cielbijouModel.client">
+        <MappingFragment StoreEntitySet="client">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="roles" ColumnName="roles" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="commande">
+      <EntityTypeMapping TypeName="cielbijouModel.commande">
+        <MappingFragment StoreEntitySet="commande">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="un_client_id" ColumnName="un_client_id" />
+          <ScalarProperty Name="date_commande" ColumnName="date_commande" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="commentaire">
+      <EntityTypeMapping TypeName="cielbijouModel.commentaire">
+        <MappingFragment StoreEntitySet="commentaire">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="un_produit_id" ColumnName="un_produit_id" />
+          <ScalarProperty Name="un_client_id" ColumnName="un_client_id" />
+          <ScalarProperty Name="date_commentaire" ColumnName="date_commentaire" />
+          <ScalarProperty Name="status_commentaire" ColumnName="status_commentaire" />
+          <ScalarProperty Name="contenu_commentaire" ColumnName="contenu_commentaire" />
+          <ScalarProperty Name="note_commentaire" ColumnName="note_commentaire" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ligne_commande">
+      <EntityTypeMapping TypeName="cielbijouModel.ligne_commande">
+        <MappingFragment StoreEntitySet="ligne_commande">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="un_produit_id" ColumnName="un_produit_id" />
+          <ScalarProperty Name="une_commande_id" ColumnName="une_commande_id" />
+          <ScalarProperty Name="quantite" ColumnName="quantite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="produit">
+      <EntityTypeMapping TypeName="cielbijouModel.produit">
+        <MappingFragment StoreEntitySet="produit">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="une_categorie_id" ColumnName="une_categorie_id" />
+          <ScalarProperty Name="nom_prod" ColumnName="nom_prod" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="image_prod" ColumnName="image_prod" />
+          <ScalarProperty Name="stock_prod" ColumnName="stock_prod" />
+          <ScalarProperty Name="prix_prod" ColumnName="prix_prod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="promotion">
+      <EntityTypeMapping TypeName="cielbijouModel.promotion">
+        <MappingFragment StoreEntitySet="promotion">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="une_categorie_id" ColumnName="une_categorie_id" />
+          <ScalarProperty Name="date_debut_promo" ColumnName="date_debut_promo" />
+          <ScalarProperty Name="date_fin_promo" ColumnName="date_fin_promo" />
+          <ScalarProperty Name="remise_promo" ColumnName="remise_promo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="cielbijouModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="categorie">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="libelle_cat" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="180" Nullable="false" />
+    <Property Name="roles" Type="varchar(max)" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="prenom" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="photo" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="commande">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="un_client_id" Type="int" Nullable="false" />
+    <Property Name="date_commande" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="commentaire">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="un_produit_id" Type="int" Nullable="false" />
+    <Property Name="un_client_id" Type="int" Nullable="false" />
+    <Property Name="date_commentaire" Type="date" Nullable="false" />
+    <Property Name="status_commentaire" Type="bit" />
+    <Property Name="contenu_commentaire" Type="varchar(max)" Nullable="false" />
+    <Property Name="note_commentaire" Type="int" />
+  </EntityType>
+  <EntityType Name="ligne_commande">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="un_produit_id" Type="int" Nullable="false" />
+    <Property Name="une_commande_id" Type="int" Nullable="false" />
+    <Property Name="quantite" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="produit">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="une_categorie_id" Type="int" Nullable="false" />
+    <Property Name="nom_prod" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="description" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="image_prod" Type="nvarchar" MaxLength="255" />
+    <Property Name="stock_prod" Type="int" Nullable="false" />
+    <Property Name="prix_prod" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="promotion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="une_categorie_id" Type="int" Nullable="false" />
+    <Property Name="date_debut_promo" Type="date" Nullable="false" />
+    <Property Name="date_fin_promo" Type="date" Nullable="false" />
+    <Property Name="remise_promo" Type="numeric" Precision="5" Scale="2" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_29A5EC2776D5A8E">
+    <End Role="categorie" Type="Self.categorie" Multiplicity="1" />
+    <End Role="produit" Type="Self.produit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categorie">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="produit">
+        <PropertyRef Name="une_categorie_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_3170B74B11108EE1">
+    <End Role="commande" Type="Self.commande" Multiplicity="1" />
+    <End Role="ligne_commande" Type="Self.ligne_commande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="commande">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ligne_commande">
+        <PropertyRef Name="une_commande_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_3170B74B6E34096C">
+    <End Role="produit" Type="Self.produit" Multiplicity="1" />
+    <End Role="ligne_commande" Type="Self.ligne_commande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="produit">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ligne_commande">
+        <PropertyRef Name="un_produit_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_67F068BC6E34096C">
+    <End Role="produit" Type="Self.produit" Multiplicity="1" />
+    <End Role="commentaire" Type="Self.commentaire" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="produit">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="commentaire">
+        <PropertyRef Name="un_produit_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_67F068BC72632DFF">
+    <End Role="client" Type="Self.client" Multiplicity="1" />
+    <End Role="commentaire" Type="Self.commentaire" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="commentaire">
+        <PropertyRef Name="un_client_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_6EEAA67D72632DFF">
+    <End Role="client" Type="Self.client" Multiplicity="1" />
+    <End Role="commande" Type="Self.commande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="commande">
+        <PropertyRef Name="un_client_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_C11D7DD176D5A8E">
+    <End Role="categorie" Type="Self.categorie" Multiplicity="1" />
+    <End Role="promotion" Type="Self.promotion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categorie">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="promotion">
+        <PropertyRef Name="une_categorie_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="cielbijouModelStoreContainer">
+    <EntitySet Name="categorie" EntityType="Self.categorie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="client" EntityType="Self.client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="commande" EntityType="Self.commande" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="commentaire" EntityType="Self.commentaire" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ligne_commande" EntityType="Self.ligne_commande" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="produit" EntityType="Self.produit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="promotion" EntityType="Self.promotion" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_29A5EC2776D5A8E" Association="Self.FK_29A5EC2776D5A8E">
+      <End Role="categorie" EntitySet="categorie" />
+      <End Role="produit" EntitySet="produit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_3170B74B11108EE1" Association="Self.FK_3170B74B11108EE1">
+      <End Role="commande" EntitySet="commande" />
+      <End Role="ligne_commande" EntitySet="ligne_commande" />
+    </AssociationSet>
+    <AssociationSet Name="FK_3170B74B6E34096C" Association="Self.FK_3170B74B6E34096C">
+      <End Role="produit" EntitySet="produit" />
+      <End Role="ligne_commande" EntitySet="ligne_commande" />
+    </AssociationSet>
+    <AssociationSet Name="FK_67F068BC6E34096C" Association="Self.FK_67F068BC6E34096C">
+      <End Role="produit" EntitySet="produit" />
+      <End Role="commentaire" EntitySet="commentaire" />
+    </AssociationSet>
+    <AssociationSet Name="FK_67F068BC72632DFF" Association="Self.FK_67F068BC72632DFF">
+      <End Role="client" EntitySet="client" />
+      <End Role="commentaire" EntitySet="commentaire" />
+    </AssociationSet>
+    <AssociationSet Name="FK_6EEAA67D72632DFF" Association="Self.FK_6EEAA67D72632DFF">
+      <End Role="client" EntitySet="client" />
+      <End Role="commande" EntitySet="commande" />
+    </AssociationSet>
+    <AssociationSet Name="FK_C11D7DD176D5A8E" Association="Self.FK_C11D7DD176D5A8E">
+      <End Role="categorie" EntitySet="categorie" />
+      <End Role="promotion" EntitySet="promotion" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

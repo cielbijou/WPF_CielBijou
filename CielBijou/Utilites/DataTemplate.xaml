@@ -1,0 +1,38 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:CielBijou.ViewModel"
+                    xmlns:view="clr-namespace:CielBijou.View">
+    
+    <DataTemplate DataType="UserControl">
+        <view:AcceuilView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ViewModelClient}">
+        <view:ClientsView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ViewModelCommande}">
+        <view:CommandeView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ViewModelCategorie}">
+        <view:CategorieView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ViewModelCommentaire}">
+        <view:CommentaireView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ViewModelPromotion}">
+        <view:PromotionView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ViewModelProduit}">
+        <view:ProduitView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ViewModelLogin}">
+        <view:ConnexionView/>
+    </DataTemplate>
+
+</ResourceDictionary>

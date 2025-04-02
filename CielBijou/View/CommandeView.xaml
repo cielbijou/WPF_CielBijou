@@ -1,0 +1,147 @@
+﻿<UserControl x:Class="CielBijou.View.CommandeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:viewmodels="clr-namespace:CielBijou.ViewModel"
+             d:DataContext="{d:DesignInstance Type=viewmodels:ViewModelCommande}"
+             mc:Ignorable="d" 
+             d:DesignHeight="640" d:DesignWidth="950" Background="White">
+    <UserControl.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="Background" Value="WhiteSmoke" />
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="1"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="1"/>
+        </Style>
+        <Style x:Key="BoutonBarreMenu" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="Margin" Value="5,0" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="1" CornerRadius="2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="LightGray" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="Gray" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Foreground" Value="Gray" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="550"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="Auto" MinHeight="222"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+
+
+        <Grid Grid.Column="1" Grid.Row="1" Margin="15,10,5,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Grid.Row="0" Content="Id client" FontSize="15" FontWeight="Bold" Margin="0,0,10,0" />
+            <TextBox Grid.Column="1" Grid.Row="0" x:Name="TextBoxIdClient" Text="{Binding SelectedClient.id, Mode=OneWay}" FontSize="15" Margin="0,0,0,10" />
+
+            <Label Grid.Column="0" Grid.Row="1" Content="Nom Client" FontSize="15" FontWeight="Bold" Margin="0,0,10,0" />
+            <TextBox Grid.Column="1" Grid.Row="1" x:Name="TextBoxNomClient" Text="{Binding SelectedClient.nom, Mode=OneWay}" FontSize="15" Margin="0,0,0,10" />
+
+            <Label Grid.Column="0" Grid.Row="2" Content="Prénom Client" FontSize="15" FontWeight="Bold" Margin="0,0,10,0" />
+            <TextBox Grid.Column="1" Grid.Row="2" x:Name="TextBoxPrenomClient" Text="{Binding SelectedClient.prenom, Mode=OneWay}" FontSize="15" Margin="0,0,0,10" />
+
+            <Label Grid.Column="0" Grid.Row="3" Content="Rôle Client" FontSize="15" FontWeight="Bold" Margin="0,0,10,0" />
+            <TextBox Grid.Column="1" Grid.Row="3" x:Name="TextBoxRoleClient" Text="{Binding SelectedClient.roles, Mode=OneWay}" FontSize="15" Margin="0,0,0,10" />
+
+            <Label Grid.Column="0" Grid.Row="4" Content="Photo Client" FontSize="15" FontWeight="Bold" Margin="0,0,10,0" />
+            <Image x:Name="ImagePhoto" Grid.Column="1" Grid.Row="4" Source="{Binding SelectedClient.photo}" Margin="10,0,0,0" MinWidth="50" MaxWidth="50" MinHeight="50" MaxHeight="50" HorizontalAlignment="Left"/>
+        </Grid>
+
+
+        <Grid Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" DataContext="{Binding ElementName=DataGridCommandes, Path=SelectedItem}" x:Name="GrilleProduits" IsEnabled="False" Height="390" Width="530" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="400"/>
+            </Grid.ColumnDefinitions>
+
+            <Label x:Name="LabelProduits" Grid.Column="0" Grid.Row="0" Content="Produits" FontSize="15" FontWeight="Bold" />
+            <DataGrid x:Name="DataGridProduits" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,10,-10,10" ItemsSource="{Binding LignesCommande}" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID Produit" Binding="{Binding id, Mode=OneWay}" Width="70"/>
+                    <DataGridTextColumn Header="Nom Produit" Binding="{Binding nom_prod, Mode=OneWay}" Width="100"/>
+                    <DataGridTextColumn Header="Description" Binding="{Binding description, Mode=OneWay}" Width="*"/>
+                    <DataGridTextColumn Header="Prix Unitaire" Binding="{Binding prix_prod, Mode=OneWay}" Width="80"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+
+        <GroupBox  Grid.Column="0" Header="Filtres" HorizontalAlignment="Left" Height="170" VerticalAlignment="Top" Width="374" Margin="8,10,0,0" Grid.Row="1">
+            <Grid  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="15,0,0,0" Width="350" Height="145">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="ID Commande" VerticalAlignment="Center"></Label>
+                <TextBox Grid.Row="0" Grid.Column="1" x:Name="TextBoxFiltreIdCommande"  MinWidth="100" MaxWidth="20" MaxHeight="20" TextChanged="TextBoxFiltreIdCommande_TextChanged" FontSize="10" HorizontalAlignment="Left" Margin="0,5,0,5" />
+
+                <Label Grid.Row="1" Grid.Column="0" Content="Date Commande" VerticalAlignment="Center"></Label>
+                <DatePicker Grid.Row="1" Grid.Column="1" x:Name="DatePickerFiltreDate" SelectedDateChanged="DatePickerFiltreDate_SelectedDateChanged" />
+            </Grid>
+        </GroupBox>
+        <DataGrid x:Name="DataGridCommandes" HorizontalAlignment="Left" Grid.Row="2" Width="390" Margin="0,10,0,0" IsReadOnly="True" AutoGenerateColumns="False" SelectionChanged="DataGridCommandes_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID Commande" Binding="{Binding id}" Width="90"/>
+                <DataGridTextColumn Header="Date Commande" Binding="{Binding date_commande, StringFormat='{}{0:dd/MM/yyyy}'}" Width="100"/>
+                <DataGridTextColumn Header="ID Client" Binding="{Binding un_client_id}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

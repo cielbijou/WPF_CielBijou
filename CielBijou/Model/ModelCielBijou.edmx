@@ -1,0 +1,515 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="cielbijouModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="categorie">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="libelle_cat" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="client">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="180" Nullable="false" />
+          <Property Name="roles" Type="varchar(max)" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="prenom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="photo" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="commande">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="un_client_id" Type="int" Nullable="false" />
+          <Property Name="date_commande" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="commentaire">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="un_produit_id" Type="int" Nullable="false" />
+          <Property Name="un_client_id" Type="int" Nullable="false" />
+          <Property Name="date_commentaire" Type="date" Nullable="false" />
+          <Property Name="status_commentaire" Type="bit" />
+          <Property Name="contenu_commentaire" Type="varchar(max)" Nullable="false" />
+          <Property Name="note_commentaire" Type="int" />
+        </EntityType>
+        <EntityType Name="ligne_commande">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="un_produit_id" Type="int" Nullable="false" />
+          <Property Name="une_commande_id" Type="int" Nullable="false" />
+          <Property Name="quantite" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="produit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="une_categorie_id" Type="int" Nullable="false" />
+          <Property Name="nom_prod" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="image_prod" Type="nvarchar" MaxLength="255" />
+          <Property Name="stock_prod" Type="int" Nullable="false" />
+          <Property Name="prix_prod" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="promotion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="une_categorie_id" Type="int" Nullable="false" />
+          <Property Name="date_debut_promo" Type="date" Nullable="false" />
+          <Property Name="date_fin_promo" Type="date" Nullable="false" />
+          <Property Name="remise_promo" Type="numeric" Precision="5" Scale="2" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_29A5EC2776D5A8E">
+          <End Role="categorie" Type="Self.categorie" Multiplicity="1" />
+          <End Role="produit" Type="Self.produit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categorie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="produit">
+              <PropertyRef Name="une_categorie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_3170B74B11108EE1">
+          <End Role="commande" Type="Self.commande" Multiplicity="1" />
+          <End Role="ligne_commande" Type="Self.ligne_commande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="commande">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ligne_commande">
+              <PropertyRef Name="une_commande_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_3170B74B6E34096C">
+          <End Role="produit" Type="Self.produit" Multiplicity="1" />
+          <End Role="ligne_commande" Type="Self.ligne_commande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produit">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ligne_commande">
+              <PropertyRef Name="un_produit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_67F068BC6E34096C">
+          <End Role="produit" Type="Self.produit" Multiplicity="1" />
+          <End Role="commentaire" Type="Self.commentaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produit">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="commentaire">
+              <PropertyRef Name="un_produit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_67F068BC72632DFF">
+          <End Role="client" Type="Self.client" Multiplicity="1" />
+          <End Role="commentaire" Type="Self.commentaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="commentaire">
+              <PropertyRef Name="un_client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_6EEAA67D72632DFF">
+          <End Role="client" Type="Self.client" Multiplicity="1" />
+          <End Role="commande" Type="Self.commande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="commande">
+              <PropertyRef Name="un_client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_C11D7DD176D5A8E">
+          <End Role="categorie" Type="Self.categorie" Multiplicity="1" />
+          <End Role="promotion" Type="Self.promotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categorie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="promotion">
+              <PropertyRef Name="une_categorie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="cielbijouModelStoreContainer">
+          <EntitySet Name="categorie" EntityType="Self.categorie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="client" EntityType="Self.client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="commande" EntityType="Self.commande" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="commentaire" EntityType="Self.commentaire" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ligne_commande" EntityType="Self.ligne_commande" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="produit" EntityType="Self.produit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="promotion" EntityType="Self.promotion" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_29A5EC2776D5A8E" Association="Self.FK_29A5EC2776D5A8E">
+            <End Role="categorie" EntitySet="categorie" />
+            <End Role="produit" EntitySet="produit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_3170B74B11108EE1" Association="Self.FK_3170B74B11108EE1">
+            <End Role="commande" EntitySet="commande" />
+            <End Role="ligne_commande" EntitySet="ligne_commande" />
+          </AssociationSet>
+          <AssociationSet Name="FK_3170B74B6E34096C" Association="Self.FK_3170B74B6E34096C">
+            <End Role="produit" EntitySet="produit" />
+            <End Role="ligne_commande" EntitySet="ligne_commande" />
+          </AssociationSet>
+          <AssociationSet Name="FK_67F068BC6E34096C" Association="Self.FK_67F068BC6E34096C">
+            <End Role="produit" EntitySet="produit" />
+            <End Role="commentaire" EntitySet="commentaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK_67F068BC72632DFF" Association="Self.FK_67F068BC72632DFF">
+            <End Role="client" EntitySet="client" />
+            <End Role="commentaire" EntitySet="commentaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK_6EEAA67D72632DFF" Association="Self.FK_6EEAA67D72632DFF">
+            <End Role="client" EntitySet="client" />
+            <End Role="commande" EntitySet="commande" />
+          </AssociationSet>
+          <AssociationSet Name="FK_C11D7DD176D5A8E" Association="Self.FK_C11D7DD176D5A8E">
+            <End Role="categorie" EntitySet="categorie" />
+            <End Role="promotion" EntitySet="promotion" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="cielbijouModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="categorie">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="libelle_cat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="produit" Relationship="Self.FK_29A5EC2776D5A8E" FromRole="categorie" ToRole="produit" />
+          <NavigationProperty Name="promotion" Relationship="Self.FK_C11D7DD176D5A8E" FromRole="categorie" ToRole="promotion" />
+        </EntityType>
+        <EntityType Name="client">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="180" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="roles" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="photo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="commentaire" Relationship="Self.FK_67F068BC72632DFF" FromRole="client" ToRole="commentaire" />
+          <NavigationProperty Name="commande" Relationship="Self.FK_6EEAA67D72632DFF" FromRole="client" ToRole="commande" />
+        </EntityType>
+        <EntityType Name="commande">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="un_client_id" Type="Int32" Nullable="false" />
+          <Property Name="date_commande" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="client" Relationship="Self.FK_6EEAA67D72632DFF" FromRole="commande" ToRole="client" />
+          <NavigationProperty Name="ligne_commande" Relationship="Self.FK_3170B74B11108EE1" FromRole="commande" ToRole="ligne_commande" />
+        </EntityType>
+        <EntityType Name="commentaire">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="un_produit_id" Type="Int32" Nullable="false" />
+          <Property Name="un_client_id" Type="Int32" Nullable="false" />
+          <Property Name="date_commentaire" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="status_commentaire" Type="Boolean" />
+          <Property Name="contenu_commentaire" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="note_commentaire" Type="Int32" />
+          <NavigationProperty Name="client" Relationship="Self.FK_67F068BC72632DFF" FromRole="commentaire" ToRole="client" />
+          <NavigationProperty Name="produit" Relationship="Self.FK_67F068BC6E34096C" FromRole="commentaire" ToRole="produit" />
+        </EntityType>
+        <EntityType Name="ligne_commande">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="un_produit_id" Type="Int32" Nullable="false" />
+          <Property Name="une_commande_id" Type="Int32" Nullable="false" />
+          <Property Name="quantite" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="commande" Relationship="Self.FK_3170B74B11108EE1" FromRole="ligne_commande" ToRole="commande" />
+          <NavigationProperty Name="produit" Relationship="Self.FK_3170B74B6E34096C" FromRole="ligne_commande" ToRole="produit" />
+        </EntityType>
+        <EntityType Name="produit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="une_categorie_id" Type="Int32" Nullable="false" />
+          <Property Name="nom_prod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="image_prod" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="stock_prod" Type="Int32" Nullable="false" />
+          <Property Name="prix_prod" Type="Double" Nullable="false" />
+          <NavigationProperty Name="categorie" Relationship="Self.FK_29A5EC2776D5A8E" FromRole="produit" ToRole="categorie" />
+          <NavigationProperty Name="commentaire" Relationship="Self.FK_67F068BC6E34096C" FromRole="produit" ToRole="commentaire" />
+          <NavigationProperty Name="ligne_commande" Relationship="Self.FK_3170B74B6E34096C" FromRole="produit" ToRole="ligne_commande" />
+        </EntityType>
+        <EntityType Name="promotion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="une_categorie_id" Type="Int32" Nullable="false" />
+          <Property Name="date_debut_promo" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="date_fin_promo" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="remise_promo" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <NavigationProperty Name="categorie" Relationship="Self.FK_C11D7DD176D5A8E" FromRole="promotion" ToRole="categorie" />
+        </EntityType>
+        <Association Name="FK_29A5EC2776D5A8E">
+          <End Role="categorie" Type="Self.categorie" Multiplicity="1" />
+          <End Role="produit" Type="Self.produit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categorie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="produit">
+              <PropertyRef Name="une_categorie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_C11D7DD176D5A8E">
+          <End Role="categorie" Type="Self.categorie" Multiplicity="1" />
+          <End Role="promotion" Type="Self.promotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categorie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="promotion">
+              <PropertyRef Name="une_categorie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_67F068BC72632DFF">
+          <End Role="client" Type="Self.client" Multiplicity="1" />
+          <End Role="commentaire" Type="Self.commentaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="commentaire">
+              <PropertyRef Name="un_client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_6EEAA67D72632DFF">
+          <End Role="client" Type="Self.client" Multiplicity="1" />
+          <End Role="commande" Type="Self.commande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="commande">
+              <PropertyRef Name="un_client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_3170B74B11108EE1">
+          <End Role="commande" Type="Self.commande" Multiplicity="1" />
+          <End Role="ligne_commande" Type="Self.ligne_commande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="commande">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ligne_commande">
+              <PropertyRef Name="une_commande_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_67F068BC6E34096C">
+          <End Role="produit" Type="Self.produit" Multiplicity="1" />
+          <End Role="commentaire" Type="Self.commentaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produit">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="commentaire">
+              <PropertyRef Name="un_produit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_3170B74B6E34096C">
+          <End Role="produit" Type="Self.produit" Multiplicity="1" />
+          <End Role="ligne_commande" Type="Self.ligne_commande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produit">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ligne_commande">
+              <PropertyRef Name="un_produit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="cielbijouEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="categorie" EntityType="Self.categorie" />
+          <EntitySet Name="client" EntityType="Self.client" />
+          <EntitySet Name="commande" EntityType="Self.commande" />
+          <EntitySet Name="commentaire" EntityType="Self.commentaire" />
+          <EntitySet Name="ligne_commande" EntityType="Self.ligne_commande" />
+          <EntitySet Name="produit" EntityType="Self.produit" />
+          <EntitySet Name="promotion" EntityType="Self.promotion" />
+          <AssociationSet Name="FK_29A5EC2776D5A8E" Association="Self.FK_29A5EC2776D5A8E">
+            <End Role="categorie" EntitySet="categorie" />
+            <End Role="produit" EntitySet="produit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_C11D7DD176D5A8E" Association="Self.FK_C11D7DD176D5A8E">
+            <End Role="categorie" EntitySet="categorie" />
+            <End Role="promotion" EntitySet="promotion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_67F068BC72632DFF" Association="Self.FK_67F068BC72632DFF">
+            <End Role="client" EntitySet="client" />
+            <End Role="commentaire" EntitySet="commentaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK_6EEAA67D72632DFF" Association="Self.FK_6EEAA67D72632DFF">
+            <End Role="client" EntitySet="client" />
+            <End Role="commande" EntitySet="commande" />
+          </AssociationSet>
+          <AssociationSet Name="FK_3170B74B11108EE1" Association="Self.FK_3170B74B11108EE1">
+            <End Role="commande" EntitySet="commande" />
+            <End Role="ligne_commande" EntitySet="ligne_commande" />
+          </AssociationSet>
+          <AssociationSet Name="FK_67F068BC6E34096C" Association="Self.FK_67F068BC6E34096C">
+            <End Role="produit" EntitySet="produit" />
+            <End Role="commentaire" EntitySet="commentaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK_3170B74B6E34096C" Association="Self.FK_3170B74B6E34096C">
+            <End Role="produit" EntitySet="produit" />
+            <End Role="ligne_commande" EntitySet="ligne_commande" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="cielbijouModelStoreContainer" CdmEntityContainer="cielbijouEntities2">
+          <EntitySetMapping Name="categorie">
+            <EntityTypeMapping TypeName="cielbijouModel.categorie">
+              <MappingFragment StoreEntitySet="categorie">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="libelle_cat" ColumnName="libelle_cat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="client">
+            <EntityTypeMapping TypeName="cielbijouModel.client">
+              <MappingFragment StoreEntitySet="client">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="roles" ColumnName="roles" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="commande">
+            <EntityTypeMapping TypeName="cielbijouModel.commande">
+              <MappingFragment StoreEntitySet="commande">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="un_client_id" ColumnName="un_client_id" />
+                <ScalarProperty Name="date_commande" ColumnName="date_commande" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="commentaire">
+            <EntityTypeMapping TypeName="cielbijouModel.commentaire">
+              <MappingFragment StoreEntitySet="commentaire">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="un_produit_id" ColumnName="un_produit_id" />
+                <ScalarProperty Name="un_client_id" ColumnName="un_client_id" />
+                <ScalarProperty Name="date_commentaire" ColumnName="date_commentaire" />
+                <ScalarProperty Name="status_commentaire" ColumnName="status_commentaire" />
+                <ScalarProperty Name="contenu_commentaire" ColumnName="contenu_commentaire" />
+                <ScalarProperty Name="note_commentaire" ColumnName="note_commentaire" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ligne_commande">
+            <EntityTypeMapping TypeName="cielbijouModel.ligne_commande">
+              <MappingFragment StoreEntitySet="ligne_commande">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="un_produit_id" ColumnName="un_produit_id" />
+                <ScalarProperty Name="une_commande_id" ColumnName="une_commande_id" />
+                <ScalarProperty Name="quantite" ColumnName="quantite" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="produit">
+            <EntityTypeMapping TypeName="cielbijouModel.produit">
+              <MappingFragment StoreEntitySet="produit">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="une_categorie_id" ColumnName="une_categorie_id" />
+                <ScalarProperty Name="nom_prod" ColumnName="nom_prod" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="image_prod" ColumnName="image_prod" />
+                <ScalarProperty Name="stock_prod" ColumnName="stock_prod" />
+                <ScalarProperty Name="prix_prod" ColumnName="prix_prod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="promotion">
+            <EntityTypeMapping TypeName="cielbijouModel.promotion">
+              <MappingFragment StoreEntitySet="promotion">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="une_categorie_id" ColumnName="une_categorie_id" />
+                <ScalarProperty Name="date_debut_promo" ColumnName="date_debut_promo" />
+                <ScalarProperty Name="date_fin_promo" ColumnName="date_fin_promo" />
+                <ScalarProperty Name="remise_promo" ColumnName="remise_promo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

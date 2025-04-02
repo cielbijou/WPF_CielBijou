@@ -1,0 +1,173 @@
+﻿<Window x:Class="CielBijou.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CielBijou"
+        xmlns:views="clr-namespace:CielBijou.View"
+        mc:Ignorable="d"
+        Title="Ciel Bijou" Height="750" Width="1200"
+        WindowStartupLocation="CenterScreen" WindowStyle="None" 
+        AllowsTransparency="True" Background="Transparent">
+    <Border Background="white" CornerRadius="30">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--menu de gauche-->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="124"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <!--Menu Icon-->
+                <Button Margin="28,44,0,50" Style="{StaticResource topButton}" Width="30">
+                    <Icon:PackIconMaterial Kind="Menu" Width="20" Height="20"/>
+                </Button>
+
+                <Border Grid.Row="1" Background="#623ed0" CornerRadius="0 50 0 30">
+                    <DockPanel>
+                        <!--logo du menu-->
+                        <Border Width="80" Height="80" Padding="3" Background="White" CornerRadius="100" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="20 -30 0 0">
+                            <Ellipse>
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="/Resources/Ciel.png"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Border>
+
+                        <!--titre du menu-->
+                        <TextBlock Text="Ciel Bijou" Foreground="White" FontSize="22" FontWeight="SemiBold" DockPanel.Dock="Top" TextAlignment="Center" Margin="5 25 0 10"/>
+                        <TextBlock Text="Gestion de la vente de bijou" Foreground="#d0bfff" FontSize="14" FontWeight="SemiBold" DockPanel.Dock="Top" TextAlignment="Center"/>
+                        <!--séparateur de menu-->
+                        <Separator Margin="25" DockPanel.Dock="Top" Height="0.8" Background="#7e5fdc"/>
+
+                        <!--menu button (DashBoardButton)-->
+                        <StackPanel DockPanel.Dock="Top">
+                            <Button Style="{StaticResource DashBoardButton}" Click="ButtonAcceuil_Click" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="HomeVariant" Style="{StaticResource DashBoardButtonIcon}"/>
+                                    <TextBlock Text="Accueil"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Style="{StaticResource DashBoardButton}" Click="Button_Click">
+                                <StackPanel Orientation="Horizontal" >
+                                    <Icon:PackIconMaterial Kind="Necklace" Style="{StaticResource DashBoardButtonIcon}"/>
+                                    <TextBlock Text="Catégorie"/>
+                                </StackPanel>
+                            </Button>
+
+
+                            <!--Utilisateur-->
+                            <!--Background="#7b5cd6" Foreground="White" pour un button-->
+                            <Button Style="{StaticResource DashBoardButton}" Click="buttonClient_click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="AccountMultipleOutline" Style="{StaticResource DashBoardButtonIcon}"/>
+                                    <TextBlock Text="Clients"/>
+                                </StackPanel>
+                            </Button>
+
+                            <!--Réservation-->
+                            <Button Style="{StaticResource DashBoardButton}" Click="Button_CommandeClick"  >
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="ClipboardTextOutline" Style="{StaticResource DashBoardButtonIcon}"/>
+                                    <TextBlock Text="Commande"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Style="{StaticResource DashBoardButton}" Click="Commentaire_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="ChatProcessing" Style="{StaticResource DashBoardButtonIcon}"/>
+                                    <TextBlock Text="Commentaire"/>
+                                </StackPanel>
+                            </Button>
+
+
+                            <!--Packs-->
+                            <Button Style="{StaticResource DashBoardButton}" Click="Button_Produit_Click" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="StoreOutline" Style="{StaticResource DashBoardButtonIcon}"/>
+                                    <TextBlock Text="Produits"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Style="{StaticResource DashBoardButton}" Click="Button_Promotions_click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="TagOutline" Style="{StaticResource DashBoardButtonIcon}"/>
+                                    <TextBlock Text="Promotions"/>
+                                </StackPanel>
+                            </Button>
+
+
+                            <Button  Style="{StaticResource DashBoardButton}" Click="Button_Connection_click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="Tools" Style="{StaticResource DashBoardButtonIcon}"/>
+                                    <TextBlock Text="Connection"/>
+                                </StackPanel>
+                            </Button>
+
+                        </StackPanel>
+
+                        <Button x:Name="BntDeconnection" Visibility="Hidden" Style="{StaticResource DashBoardButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0" Click="Button_Deconnexion_click">
+                            <StackPanel Orientation="Horizontal">
+                                <Icon:PackIconMaterial Kind="Logout" Style="{StaticResource DashBoardButtonIcon}"/>
+                                <TextBlock Text="Déconnexion"/>
+                            </StackPanel>
+                        </Button>
+
+
+                    </DockPanel>
+                </Border>
+            </Grid>
+
+            <!--menu de section-->
+            <Grid Grid.Column="1" Margin="30 20 20 20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <!--barre de recherche-->
+                <Grid Width="300" HorizontalAlignment="Left">
+                    <TextBlock Margin="20 0" VerticalAlignment="Center" Foreground="#b0b9c6" Panel.ZIndex="1" Text="Chercher ici ..." />
+                    <TextBox x:Name="textSearch" Style="{StaticResource Search}"/>
+
+                    <Icon:PackIconMaterial Kind="Magnify" Width="15" Height="15" VerticalAlignment="Center" Margin="0 0 15 0" Foreground="#b0b9c6" HorizontalAlignment="Right"/>
+                </Grid>
+
+                <!--button Haut-->
+                <Button Style="{StaticResource topButton}" Margin="0 0 20 0" HorizontalAlignment="Right" Click="CloseMain_Click">
+                    <Icon:PackIconMaterial Kind="Close"/>
+                </Button>
+
+                <Button Style="{StaticResource topButton}" Margin="0 0 55 0" Background="#dcdcdc" HorizontalAlignment="Right">
+                    <Icon:PackIconMaterial Kind="Cog"/>
+                </Button>
+
+                <Button Style="{StaticResource topButton}" Margin="0 0 85 0" HorizontalAlignment="Right">
+                    <Icon:PackIconMaterial Kind="BellAlert"/>
+                </Button>
+
+                <!--séparateur-->
+                <Separator Height="1" Background="#dae2ea" Margin="0,42,0,579" Grid.Row="5"/>
+
+                <DockPanel x:Name="DockPanel" Margin="0,57,0,10" Grid.Row="5">
+                    <!-- AcceuilView va prendre tout l'espace disponible sans définir DockPanel.Dock -->
+                    <views:AcceuilView/>
+                </DockPanel>
+
+            </Grid>
+
+        </Grid>
+    </Border>
+</Window>

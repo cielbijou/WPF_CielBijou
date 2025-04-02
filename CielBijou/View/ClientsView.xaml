@@ -1,0 +1,220 @@
+﻿<UserControl x:Class="CielBijou.View.ClientsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:viewmodels="clr-namespace:CielBijou.ViewModel"
+             d:DataContext="{d:DesignInstance Type=viewmodels:ViewModelClient}"
+             mc:Ignorable="d" 
+             d:DesignHeight="640" d:DesignWidth="950" Background="White">
+    <UserControl.Resources>
+
+        <Style TargetType="Grid">
+            <Setter Property="Background" Value="WhiteSmoke" />
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="1"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="1"/>
+        </Style>
+
+        <Style x:Key="BoutonBarreMenu" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="Margin" Value="5,0" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="1" CornerRadius="2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="LightGray" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="Gray" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Foreground" Value="Gray" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="61"/>
+            <RowDefinition Height="390*"/>
+        </Grid.RowDefinitions>
+
+
+        <ToolBar Grid.ColumnSpan="2" Grid.Row="0" Background="#F3F3F3" BorderBrush="#D4D4D4" BorderThickness="0,0,0,1">
+
+            <Button x:Name="ButtonAjouter" Click="ButtonAjouter_Click" Style="{StaticResource BoutonBarreMenu}">
+                <StackPanel>
+                    <Image Source="/Resources/Ajouter.png" Height="30" />
+                    <Label Content="Ajouter" FontSize="10"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="ButtonModifier" Click="ButtonModifier_Click" Style="{StaticResource BoutonBarreMenu}">
+                <StackPanel>
+                    <Image Source="/Resources/Modifier.png" Height="30" />
+                    <Label Content="Modifer" FontSize="10"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="ButtonSupprimer" Click="ButtonSupprimer_Click" Style="{StaticResource BoutonBarreMenu}">
+                <StackPanel>
+                    <Image Source="/Resources/poubelle.png" Height="30" />
+                    <Label Content="Supprimer" FontSize="10"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="ButtonValider" Click="ButtonValider_Click" Visibility="Hidden" Style="{StaticResource BoutonBarreMenu}">
+                <StackPanel>
+                    <Image Source="/Resources/Enregistrer.png" Height="30" />
+                    <Label Content="Valider" FontSize="10"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="ButtonAnnuler" Click="ButtonAnnuler_Click" Visibility="Hidden"  Style="{StaticResource BoutonBarreMenu}">
+                <StackPanel>
+                    <Image Source="/Resources/Annuler.png" Height="30" />
+                    <Label Content="Annuler" FontSize="10"/>
+                </StackPanel>
+            </Button>
+        </ToolBar>
+
+        <GroupBox  Grid.Column="0" Header="Filtres" HorizontalAlignment="Left" Height="170" VerticalAlignment="Top" Width="375" Margin="10,7,0,0" Grid.Row="1">
+            <Grid  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="15,0,0,0" Width="350" Height="145">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="Nom" VerticalAlignment="Center"></Label>
+                <TextBox Grid.Row="0" Grid.Column="1" x:Name="TextBoxFiltreNom"  MinWidth="100" MaxWidth="20" MaxHeight="20" TextChanged="TextBoxFiltreNom_TextChanged" FontSize="10" HorizontalAlignment="Left" Margin="0,5,0,5" />
+
+                <Label Grid.Row="1" Grid.Column="0" Content="Prénom" VerticalAlignment="Center"></Label>
+                <TextBox Grid.Row="1" Grid.Column="1" x:Name="TextBoxFiltrePrenom"  MinWidth="100" MaxWidth="100" MaxHeight="20" TextChanged="TextBoxFiltrePrenom_TextChanged"  FontSize="10" HorizontalAlignment="Left" Margin="0,5,0,5"  />
+
+                <Label Grid.Row="2" Grid.Column="0" Content="Email" VerticalAlignment="Center"></Label>
+                <TextBox Grid.Row="2" Grid.Column="1" x:Name="TextBoxFiltreEmail"  MinWidth="200" MaxWidth="200" MaxHeight="20" TextChanged="TextBoxFiltreEmail_TextChanged"  FontSize="10" HorizontalAlignment="Left"  Margin="0,5,0,5" />
+
+
+
+                <Label Grid.Row="3" Grid.Column="0" Content="Groupe" VerticalAlignment="Center"></Label>
+                <ComboBox x:Name="ComboBoxFiltreGroupe" Grid.Column="1" Grid.Row="3" 
+                      MinWidth="150" MaxWidth="150" VerticalAlignment="Center" 
+                      HorizontalAlignment="Left" Margin="0,5,0,5" 
+                      FontSize="10" Width="200" SelectionChanged="ComboBoxFiltreGroupe_SelectionChanged"  >
+                    <ComboBoxItem Content='["ROLE_ADMIN"]'/>
+                    <ComboBoxItem Content='["ROLE_USER"]'/>
+                </ComboBox>
+                <Button x:Name="AnnulerFiltreGroupe" Grid.Column="1" Grid.Row="3" Width="30" Height="20" Margin="130,0,0,0" Click="AnnulerFiltreGroupe_Click" >
+                    <Image Source="/Resources/Annuler.png" Height="15" />
+                </Button>
+            </Grid>
+
+
+        </GroupBox>
+        <DataGrid x:Name="DataGridClients" HorizontalAlignment="Left" Grid.Row="1" Width="390" Margin="0,182,0,0" IsReadOnly="True" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="id" Binding="{Binding id}" Width="20"/>
+                <DataGridTextColumn Header="Nom" Binding="{Binding nom}" Width="80"/>
+                <DataGridTextColumn Header="Prenom" Binding="{Binding prenom}" Width="80"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding email}" Width="100"/>
+                <DataGridTextColumn Header="Groupe" Binding="{Binding roles}" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <Grid Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" DataContext="{Binding ElementName=DataGridClients, Path=SelectedItem}" x:Name="GrilleClients" IsEnabled="False" Height="303" Width="400" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="300"/>
+            </Grid.ColumnDefinitions>
+
+            <Label x:Name="LabelId" Grid.Column="0" Grid.Row="0" Content="Id" FontSize="15" />
+            <TextBox x:Name="TextBoxId" Text="{Binding id, Mode=OneWay}" 
+                 Margin="10"
+                 Grid.Column="1" Grid.Row="0" 
+                 FontSize="15" MinWidth="60" MaxWidth="60" HorizontalAlignment="Left" />
+
+            <Label x:Name="LabelNom" Grid.Column="0" Grid.Row="1" Content="Nom" FontSize="15"/>
+            <TextBox x:Name="TextBoxNom" Grid.Column="1" Grid.Row="1" Text="{Binding nom, Mode=OneWay}" Margin="10" FontSize="15" MinWidth="270" MaxWidth="270" HorizontalAlignment="Left"/>
+
+            <Label x:Name="LabelPrenom" Grid.Column="0" Grid.Row="2" Content="Prenom" FontSize="15"/>
+            <TextBox x:Name="TextBoxPrenom" Grid.Column="1" Grid.Row="2" Text="{Binding prenom, Mode=OneWay}" Margin="10" FontSize="15" MinWidth="270" MaxWidth="270" HorizontalAlignment="Left"/>
+
+            <Label x:Name="LabelEmail" Grid.Column="0" Grid.Row="3" Content="Email" FontSize="15"/>
+            <TextBox x:Name="TextBoxEmail" Grid.Column="1" Grid.Row="3" Text="{Binding email, Mode=OneWay}" Margin="10" FontSize="15" MinWidth="270" MaxWidth="270" HorizontalAlignment="Left"/>
+
+            <Label x:Name="LabelMdp" Grid.Column="0" Grid.Row="4" Content="Mot de passe" FontSize="15"/>
+            <TextBox x:Name="TextBoxMdp" Grid.Column="1" Grid.Row="4" Text="{Binding password, Mode=OneWay}" Margin="10" FontSize="15" MinWidth="150" MaxWidth="150" HorizontalAlignment="Left"/>
+            <Button x:Name="GénérerMdp" Grid.Column="1" Grid.Row="4" Height="20" Width="50" Margin="165,11,78,11" Click="GénérerMdp_Click">
+                <DockPanel>
+                    <Image Source="/Resources/Mdp.png" Width="15" />
+                    <Label Content="Générer" FontSize="4" Width="36" Margin="0"/>
+                </DockPanel>
+            </Button>
+            <Button x:Name="SaisirMdp" Grid.Column="1" Grid.Row="4" Height="20" Margin="220,11,27,11" Click="SaisirMdp_Click">
+                <DockPanel>
+                    <Image Source="/Resources/Cle.png" Width="15" />
+                    <Label Content="Saisir" FontSize="4" Width="36" Margin="0"/>
+                </DockPanel>
+            </Button>
+
+
+            <Label x:Name="LabelGroupe" Grid.Column="0" Grid.Row="5" Content="Groupe" FontSize="15"/>
+            <ComboBox x:Name="ComboBoxGroupe"  
+                  SelectedValuePath="Content"
+                  SelectedValue="{Binding roles, Mode=OneWay}"
+                  Grid.Column="1" Grid.Row="5" 
+                  MinWidth="150" MaxWidth="150" VerticalAlignment="Center" 
+                  HorizontalAlignment="Left" Margin="10,6.5,0,11" 
+                  FontSize="15" Width="200" Height="25">
+                <ComboBoxItem Content='["ROLE_ADMIN"]'/>
+                <ComboBoxItem Content='["ROLE_USER"]'/>
+            </ComboBox>
+
+            <Label x:Name="LabelPhoto" Grid.Column="0" Grid.Row="6" Content="Photo" FontSize="15"/>
+            <Button x:Name="ButtonPacourirPhoto" Grid.Column="1" Grid.Row="6" Content="Ajouter/Modifier la photo"  Click="ButtonPacourirPhoto_Click" Width="200" Height="20" Margin="80,16,20,14"/>
+            <Image x:Name="ImagePhoto" Grid.Column="1" Grid.Row="6" Source="{Binding photo}" Margin="10,0,0,0" MinWidth="50" MaxWidth="50" MinHeight="50" MaxHeight="50" HorizontalAlignment="Left"/>
+        </Grid>
+    </Grid>
+
+
+</UserControl> 

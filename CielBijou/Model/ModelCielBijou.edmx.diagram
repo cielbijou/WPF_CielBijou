@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="336c322ec3584825ac38913f5dfa57ab" Name="Diagram1" ZoomLevel="81">
+        <EntityTypeShape EntityType="cielbijouModel.categorie" Width="1.5" PointX="4.875" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="cielbijouModel.client" Width="1.5" PointX="4.625" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="cielbijouModel.commande" Width="1.5" PointX="7.125" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="cielbijouModel.commentaire" Width="1.5" PointX="2.5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="cielbijouModel.ligne_commande" Width="1.5" PointX="7" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="cielbijouModel.produit" Width="1.5" PointX="2.625" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="cielbijouModel.promotion" Width="1.5" PointX="8.125" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="cielbijouModel.FK_29A5EC2776D5A8E" ManuallyRouted="false" />
+        <AssociationConnector Association="cielbijouModel.FK_C11D7DD176D5A8E" ManuallyRouted="false" />
+        <AssociationConnector Association="cielbijouModel.FK_67F068BC72632DFF" ManuallyRouted="false" />
+        <AssociationConnector Association="cielbijouModel.FK_6EEAA67D72632DFF" ManuallyRouted="false" />
+        <AssociationConnector Association="cielbijouModel.FK_3170B74B11108EE1" ManuallyRouted="false" />
+        <AssociationConnector Association="cielbijouModel.FK_67F068BC6E34096C" ManuallyRouted="false" />
+        <AssociationConnector Association="cielbijouModel.FK_3170B74B6E34096C" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

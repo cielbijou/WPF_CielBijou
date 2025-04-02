@@ -1,0 +1,208 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Administrateur\\CielBijou\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{78532569-E890-4A56-AA75-FA6ABDD354A1}|CielBijou\\CielBijou.csproj|c:\\users\\administrateur\\cielbijou\\cielbijou\\windows\\loginwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{78532569-E890-4A56-AA75-FA6ABDD354A1}|CielBijou\\CielBijou.csproj|solutionrelative:cielbijou\\windows\\loginwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78532569-E890-4A56-AA75-FA6ABDD354A1}|CielBijou\\CielBijou.csproj|c:\\users\\administrateur\\cielbijou\\cielbijou\\view\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{78532569-E890-4A56-AA75-FA6ABDD354A1}|CielBijou\\CielBijou.csproj|solutionrelative:cielbijou\\view\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78532569-E890-4A56-AA75-FA6ABDD354A1}|CielBijou\\CielBijou.csproj|c:\\users\\administrateur\\cielbijou\\cielbijou\\view\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{78532569-E890-4A56-AA75-FA6ABDD354A1}|CielBijou\\CielBijou.csproj|solutionrelative:cielbijou\\view\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78532569-E890-4A56-AA75-FA6ABDD354A1}|CielBijou\\CielBijou.csproj|c:\\users\\administrateur\\cielbijou\\cielbijou\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{78532569-E890-4A56-AA75-FA6ABDD354A1}|CielBijou\\CielBijou.csproj|solutionrelative:cielbijou\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78532569-E890-4A56-AA75-FA6ABDD354A1}|CielBijou\\CielBijou.csproj|c:\\users\\administrateur\\cielbijou\\cielbijou\\windows\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{78532569-E890-4A56-AA75-FA6ABDD354A1}|CielBijou\\CielBijou.csproj|solutionrelative:cielbijou\\windows\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78532569-E890-4A56-AA75-FA6ABDD354A1}|CielBijou\\CielBijou.csproj|c:\\users\\administrateur\\cielbijou\\cielbijou\\view\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{78532569-E890-4A56-AA75-FA6ABDD354A1}|CielBijou\\CielBijou.csproj|solutionrelative:cielbijou\\view\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78532569-E890-4A56-AA75-FA6ABDD354A1}|CielBijou\\CielBijou.csproj|c:\\users\\administrateur\\cielbijou\\cielbijou\\view\\loginview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{78532569-E890-4A56-AA75-FA6ABDD354A1}|CielBijou\\CielBijou.csproj|solutionrelative:cielbijou\\view\\loginview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78532569-E890-4A56-AA75-FA6ABDD354A1}|CielBijou\\CielBijou.csproj|c:\\users\\administrateur\\cielbijou\\cielbijou\\view\\commentaireview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{78532569-E890-4A56-AA75-FA6ABDD354A1}|CielBijou\\CielBijou.csproj|solutionrelative:cielbijou\\view\\commentaireview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78532569-E890-4A56-AA75-FA6ABDD354A1}|CielBijou\\CielBijou.csproj|C:\\Users\\Administrateur\\CielBijou\\cielbijou\\model\\modelcielbijou.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
+      "RelativeMoniker": "D:0:0:{78532569-E890-4A56-AA75-FA6ABDD354A1}|CielBijou\\CielBijou.csproj|solutionrelative:cielbijou\\model\\modelcielbijou.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Administrateur\\CielBijou\\CielBijou\\View\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "CielBijou\\View\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\Administrateur\\CielBijou\\CielBijou\\View\\MainWindow.xaml.cs",
+              "RelativeToolTip": "CielBijou\\View\\MainWindow.xaml.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAAACcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T12:36:30.559Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Administrateur\\CielBijou\\CielBijou\\View\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "CielBijou\\View\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\Administrateur\\CielBijou\\CielBijou\\View\\MainWindow.xaml",
+              "RelativeToolTip": "CielBijou\\View\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-02T12:36:03.184Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\Administrateur\\CielBijou\\CielBijou\\App.xaml",
+              "RelativeDocumentMoniker": "CielBijou\\App.xaml",
+              "ToolTip": "C:\\Users\\Administrateur\\CielBijou\\CielBijou\\App.xaml",
+              "RelativeToolTip": "CielBijou\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-02T12:31:20.421Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LoginWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Administrateur\\CielBijou\\CielBijou\\Windows\\LoginWindow.xaml.cs",
+              "RelativeDocumentMoniker": "CielBijou\\Windows\\LoginWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\Administrateur\\CielBijou\\CielBijou\\Windows\\LoginWindow.xaml.cs",
+              "RelativeToolTip": "CielBijou\\Windows\\LoginWindow.xaml.cs",
+              "ViewState": "AQIAAE8AAAAAAAAAAIAwwF0AAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T12:19:16.813Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LoginWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Administrateur\\CielBijou\\CielBijou\\Windows\\LoginWindow.xaml",
+              "RelativeDocumentMoniker": "CielBijou\\Windows\\LoginWindow.xaml",
+              "ToolTip": "C:\\Users\\Administrateur\\CielBijou\\CielBijou\\Windows\\LoginWindow.xaml",
+              "RelativeToolTip": "CielBijou\\Windows\\LoginWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-02T12:15:09.255Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CommentaireView.xaml",
+              "DocumentMoniker": "C:\\Users\\Administrateur\\CielBijou\\CielBijou\\View\\CommentaireView.xaml",
+              "RelativeDocumentMoniker": "CielBijou\\View\\CommentaireView.xaml",
+              "ToolTip": "C:\\Users\\Administrateur\\CielBijou\\CielBijou\\View\\CommentaireView.xaml",
+              "RelativeToolTip": "CielBijou\\View\\CommentaireView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-02T12:08:44.033Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ModelCielBijou.edmx [Diagram1]",
+              "DocumentMoniker": "C:\\Users\\Administrateur\\CielBijou\\CielBijou\\Model\\ModelCielBijou.edmx",
+              "RelativeDocumentMoniker": "CielBijou\\Model\\ModelCielBijou.edmx",
+              "ToolTip": "C:\\Users\\Administrateur\\CielBijou\\CielBijou\\Model\\ModelCielBijou.edmx [Diagram1]",
+              "RelativeToolTip": "CielBijou\\Model\\ModelCielBijou.edmx [Diagram1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
+              "WhenOpened": "2025-01-15T15:18:18.401Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "5ce71558-3755-4fcd-8803-f26bc502063d",
+        "Display": 0,
+        "X": -5,
+        "Y": 146,
+        "Width": 650,
+        "Height": 498,
+        "WindowState": 2
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LoginView.xaml",
+              "DocumentMoniker": "C:\\Users\\Administrateur\\CielBijou\\CielBijou\\View\\LoginView.xaml",
+              "RelativeDocumentMoniker": "CielBijou\\View\\LoginView.xaml",
+              "ToolTip": "C:\\Users\\Administrateur\\CielBijou\\CielBijou\\View\\LoginView.xaml",
+              "RelativeToolTip": "CielBijou\\View\\LoginView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-02T12:16:39.145Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "4517498a-dbe4-4b16-9156-541d269f9c19",
+        "Display": 0,
+        "X": -5,
+        "Y": 55,
+        "Width": 951,
+        "Height": 926,
+        "WindowState": 2
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LoginView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Administrateur\\CielBijou\\CielBijou\\View\\LoginView.xaml.cs",
+              "RelativeDocumentMoniker": "CielBijou\\View\\LoginView.xaml.cs",
+              "ToolTip": "C:\\Users\\Administrateur\\CielBijou\\CielBijou\\View\\LoginView.xaml.cs",
+              "RelativeToolTip": "CielBijou\\View\\LoginView.xaml.cs",
+              "ViewState": "AQIAACoAAAAAAAAAAAAowEAAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-24T14:05:27.829Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
