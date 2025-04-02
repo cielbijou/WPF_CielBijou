@@ -31,8 +31,4 @@
         <view:ProduitView/>
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type vm:ViewModelLogin}">
-        <view:ConnexionView/>
-    </DataTemplate>
-
 </ResourceDictionary>

@@ -66,7 +66,5 @@ C:\Users\Administrateur\CielBijou\CielBijou\obj\Debug\View\PromotionView.g.cs
 C:\Users\Administrateur\CielBijou\CielBijou\obj\Debug\View\PromotionView.baml
 C:\Users\Administrateur\CielBijou\CielBijou\obj\Debug\View\ProduitView.g.cs
 C:\Users\Administrateur\CielBijou\CielBijou\obj\Debug\View\ProduitView.baml
-C:\Users\Administrateur\CielBijou\CielBijou\obj\Debug\View\LoginView.g.cs
-C:\Users\Administrateur\CielBijou\CielBijou\obj\Debug\View\LoginView.baml
 C:\Users\Administrateur\CielBijou\CielBijou\obj\Debug\Windows\LoginWindow.g.cs
 C:\Users\Administrateur\CielBijou\CielBijou\obj\Debug\Windows\LoginWindow.baml

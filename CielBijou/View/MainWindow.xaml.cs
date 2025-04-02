@@ -40,12 +40,8 @@ namespace CielBijou
 
         private void buttonClient_click(object sender, RoutedEventArgs e)
         {
-            if (VerifConnection())
-            {
-                DockPanel.Children.Clear();
-                DockPanel.Children.Add(new ClientsView());
-            }
-            else MessageBox.Show("Vous devez etre connecté en tant qu'administrateur pour accéder à cette page");
+            DockPanel.Children.Clear();
+            DockPanel.Children.Add(new ClientsView());
         }
 
         private void MenuItemQuitter_Click(object sender, RoutedEventArgs e)
@@ -55,22 +51,14 @@ namespace CielBijou
 
         private void Commentaire_Click(object sender, RoutedEventArgs e)
         {
-            if (VerifConnection())
-            {
-                DockPanel.Children.Clear();
-                DockPanel.Children.Add(new CommentaireView());
-            }
-            else MessageBox.Show("Vous devez etre connecté en tant qu'administrateur pour accéder à cette page");
+            DockPanel.Children.Clear();
+            DockPanel.Children.Add(new CommentaireView());
         }
 
         private void MenuItemCommande_Click(object sender, RoutedEventArgs e)
         {
-            if (VerifConnection())
-            {
-                DockPanel.Children.Clear();
-                DockPanel.Children.Add(new CommandeView());
-            }
-            else MessageBox.Show("Vous devez etre connecté en tant qu'administrateur pour accéder à cette page");
+            DockPanel.Children.Clear();
+            DockPanel.Children.Add(new CommandeView());
         }
 
         private void MenuItemLigneCommande_Click(object sender, RoutedEventArgs e)
@@ -103,63 +91,31 @@ namespace CielBijou
 
         private void Button_CommandeClick(object sender, RoutedEventArgs e)
         {
-            if (VerifConnection())
-            {
-                DockPanel.Children.Clear();
-                DockPanel.Children.Add(new CommandeView());
-            }
-            else MessageBox.Show("Vous devez etre connecté en tant qu'administrateur pour accéder à cette page");
+            DockPanel.Children.Clear();
+            DockPanel.Children.Add(new CommandeView());
         }
 
         private void Button_Promotions_click(object sender, RoutedEventArgs e)
         {
-            if (VerifConnection())
-            {
-                DockPanel.Children.Clear();
-                DockPanel.Children.Add(new PromotionView());
-            }
-            else MessageBox.Show("Vous devez etre connecté en tant qu'administrateur pour accéder à cette page");
+            DockPanel.Children.Clear();
+            DockPanel.Children.Add(new PromotionView());
         }
 
         private void Button_Produit_Click(object sender, RoutedEventArgs e)
         {
-            if (VerifConnection())
-            {
-                DockPanel.Children.Clear();
-                DockPanel.Children.Add(new ProduitView());
-            }
-            else MessageBox.Show("Vous devez etre connecté en tant qu'administrateur pour accéder à cette page");
-        }
-
-        private void Button_Connection_click(object sender, RoutedEventArgs e)
-        { 
-                DockPanel.Children.Clear();
-                DockPanel.Children.Add(new ConnexionView());
+            DockPanel.Children.Clear();
+            DockPanel.Children.Add(new ProduitView());
         }
 
         private void Button_Deconnexion_click(object sender, RoutedEventArgs e)
         {
-            ConnexionView.utilConnecte = null;
-        }
-
-        public bool VerifConnection()
-        {
-            if (ConnexionView.utilConnecte != null)
-            {
-                BntDeconnection.Visibility = Visibility.Visible;
-                return true;
-            }
-            else return false;
+            LoginWindow.utilConnecte = null;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (VerifConnection())
-            {
-                DockPanel.Children.Clear();
-                DockPanel.Children.Add(new CategorieView());
-            }
-            else MessageBox.Show("Vous devez etre connecté en tant qu'administrateur pour accéder à cette page");
+            DockPanel.Children.Clear();
+            DockPanel.Children.Add(new CategorieView());
         }
     }
 }

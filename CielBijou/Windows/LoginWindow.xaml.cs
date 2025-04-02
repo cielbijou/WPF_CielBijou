@@ -1,6 +1,8 @@
-﻿using CielBijou.Model;
+﻿using CielBijou;
+using CielBijou.Model;
 using CielBijou.View;
 using CielBijou.ViewModel;
+using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -87,43 +89,35 @@ namespace PPE.Wpf.Windows
         /// </summary>
         private void BtnConnexion_Click(object sender, RoutedEventArgs e)
         {
-            try
+            string useremail = txtEmail.Text;
+            string password = txtPassword.Password;
+
+            bool isValidUser = false;
+
+            // Utilisation du bon contexte (Database First)
+            using (cielbijouEntities2 context = new cielbijouEntities2())
             {
-                string mail = txtEmail.Text;
-                string pwd = txtPassword.Password;
-                unCli = viewModelClient.getUnClientByMail(mail); //pwd admin :  5Hdj34#ZSAyb
-                if (unCli == null)
+                client user = context.client.FirstOrDefault(u => u.email == useremail);
+
+                if (user != null && user.roles.Contains("ROLE_ADMIN"))
                 {
-                    MessageBox.Show("Erreur,  inconnu", "INFORMATION", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    ((App)Application.Current).client = user;
+                    user.password = user.password.Replace("$Password", "$2a$"); // ⚠️ Vérifie que ce remplacement est nécessaire
+                    isValidUser = BCrypt.Net.BCrypt.Verify(password, user.password);
                 }
-                else
-                {
-                    bool res = CryptSharp.Crypter.CheckPassword(pwd, unCli.password);
-                    if (res)
-                    {
-                        /*if (unCli.roles != "[\"ROLE_ADMIN\"]")
-                        {
-                            MessageBox.Show("Vous devez etre administrateur pour accéder a cette interface");
-                        }
-                        else
-                        {*/
-                        utilConnecte = unCli;
-                        accueil.LabelStatutBarre.Content = "Bienvenue " + utilConnecte.nom + " " + utilConnecte.prenom;
-                        MessageBox.Show("Bonjour " + utilConnecte.nom);
-                        //}
-                    }
-                    else
-                    {
-                        MessageBox.Show("Erreur, utilisateur ", "INFORMATION", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Erreur, utilisateur inconnu", "INFORMATION", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 
+            if (isValidUser)
+            {
+                this.DialogResult = true;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Email ou mot de passe incorrect.");
+            }
         }
+
 
         /// <summary>
         /// action avec le bouton gauche de la souris la page de connexion

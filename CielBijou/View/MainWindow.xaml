@@ -104,13 +104,6 @@
                             </Button>
 
 
-                            <Button  Style="{StaticResource DashBoardButton}" Click="Button_Connection_click">
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="Tools" Style="{StaticResource DashBoardButtonIcon}"/>
-                                    <TextBlock Text="Connection"/>
-                                </StackPanel>
-                            </Button>
-
                         </StackPanel>
 
                         <Button x:Name="BntDeconnection" Visibility="Hidden" Style="{StaticResource DashBoardButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0" Click="Button_Deconnexion_click">
