@@ -1,13 +1,9 @@
 ﻿using CielBijou.Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace CielBijou.ViewModel
@@ -74,11 +70,12 @@ namespace CielBijou.ViewModel
 
         public string getId(int id)
         {
-           var idCli = db.client.FirstOrDefault(c => c.id.Equals(id));
-            if(idCli != null)
+            var idCli = db.client.FirstOrDefault(c => c.id.Equals(id));
+            if (idCli != null)
             {
                 return idCli.id.ToString();
-            } return "";
+            }
+            return "";
         }
 
         public string getNom(int id)
@@ -113,7 +110,7 @@ namespace CielBijou.ViewModel
 
         public String getPhtot(int id)
         {
-            var idCli = db.client.FirstOrDefault(c => c.id ==id);
+            var idCli = db.client.FirstOrDefault(c => c.id == id);
             if (idCli != null)
             {
                 return idCli.photo;
@@ -142,7 +139,7 @@ namespace CielBijou.ViewModel
         {
             try
             {
-                LesClients = new ObservableCollection<client>(db.client.Where(c=>c.nom.Contains(nom) && c.prenom.Contains(prenom) && c.email.Contains(mail) && c.roles.Contains(groupe)).ToList());
+                LesClients = new ObservableCollection<client>(db.client.Where(c => c.nom.Contains(nom) && c.prenom.Contains(prenom) && c.email.Contains(mail) && c.roles.Contains(groupe)).ToList());
             }
             catch (Exception ex)
             {
@@ -211,12 +208,12 @@ namespace CielBijou.ViewModel
                 client clientAModifier = db.client.Single(c => c.id == unClient.id);
                 // Modifications des propriétés du client
                 clientAModifier.nom = unClient.nom;
-                    clientAModifier.prenom = unClient.prenom;
-                    clientAModifier.email = unClient.email;
-                    clientAModifier.commande = unClient.commande;
-                    clientAModifier.roles = unClient.roles;
-                    clientAModifier.password = unClient.password;
-                    clientAModifier.photo = unClient.photo;
+                clientAModifier.prenom = unClient.prenom;
+                clientAModifier.email = unClient.email;
+                clientAModifier.commande = unClient.commande;
+                clientAModifier.roles = unClient.roles;
+                clientAModifier.password = unClient.password;
+                clientAModifier.photo = unClient.photo;
 
                 db.SaveChanges();
 

@@ -82,18 +82,18 @@
                 <StackPanel Orientation="Horizontal" Margin="5">
                     <Label Content="Commentaire" VerticalAlignment="top" Width="120"/>
                     <TextBox Text="{Binding SelectedCommentaire.leCommentaire.contenu_commentaire}" 
-                             IsEnabled="False" Width="270" Height="80" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Margin="5"/>
+                             IsEnabled="False" x:Name="TextBoxContenuCommentaire" Width="270" 
+                             Height="80" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Margin="5"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="5">
                     <Label Content="Date" VerticalAlignment="Center" Width="120"/>
-                    <TextBox Text="{Binding SelectedCommentaire.leCommentaire.date_commentaire, StringFormat={}{0:dd/MM/yyyy}}" 
-                             IsEnabled="False" Width="200" Margin="5"/>
+                    
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="5">
                     <Label Content="Note" VerticalAlignment="Center" Width="120"/>
-                    <TextBox Text="{Binding SelectedCommentaire.leCommentaire.note_commentaire}" IsEnabled="False" Width="200" Margin="5"/>
+                    <TextBox x:Name="TextBoxNoteCommentaire" Text="{Binding SelectedCommentaire.leCommentaire.note_commentaire}" IsEnabled="False" Width="200" Margin="5"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="5">
@@ -105,7 +105,7 @@
 
                 <!-- Actions sur le commentaire -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-                    <Button Content="Supprimer" Command="{Binding SupprimerCommand}" Margin="5"/>
+                    <Button Content="Repondre" Command="{Binding SupprimerReponse}" Margin="5"/>
                 </StackPanel>
             </StackPanel>
         </GroupBox>

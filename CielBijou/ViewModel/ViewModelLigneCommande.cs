@@ -5,8 +5,6 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace CielBijou.ViewModel
@@ -67,10 +65,10 @@ namespace CielBijou.ViewModel
         /// <returns></returns>
         public ObservableCollection<ligne_commande> getLesLignesCommande(int id)
         {
-            ObservableCollection<ligne_commande> lesLignesCommande = new ObservableCollection<ligne_commande>(); 
+            ObservableCollection<ligne_commande> lesLignesCommande = new ObservableCollection<ligne_commande>();
             try
             {
-                lesLignesCommande = new ObservableCollection<ligne_commande>(db.ligne_commande.Where(c=>c.une_commande_id.Equals(id)).ToList());
+                lesLignesCommande = new ObservableCollection<ligne_commande>(db.ligne_commande.Where(c => c.une_commande_id.Equals(id)).ToList());
             }
             catch (Exception ex)
             {
@@ -83,7 +81,7 @@ namespace CielBijou.ViewModel
         {
             return db.ligne_commande
                      .Where(c => c.une_commande_id == idCommande)
-                     .Select(c => c.un_produit_id) 
+                     .Select(c => c.un_produit_id)
                      .ToList();
         }
 

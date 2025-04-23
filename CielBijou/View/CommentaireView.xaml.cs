@@ -1,19 +1,5 @@
-﻿using CielBijou.Model;
-using CielBijou.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using CielBijou.ViewModel;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CielBijou.View
 {
@@ -23,9 +9,8 @@ namespace CielBijou.View
     public partial class CommentaireView : UserControl
     {
         private string Mode;
-        private ViewModelLigneCommande viewModelLigneCommande;
         private ViewModelClient viewModelClient;
-        private ViewModelCommande viewModelCommande;
+        private ViewModelCommentaire viewModelCommentaire;
         private ViewModelProduit viewModelProduit;
 
         public CommentaireView()
@@ -33,10 +18,17 @@ namespace CielBijou.View
             InitializeComponent();
             this.viewModelProduit = new ViewModelProduit();
             this.viewModelClient = new ViewModelClient();
-            this.viewModelCommande = new ViewModelCommande();
-            this.viewModelLigneCommande = new ViewModelLigneCommande();
+            this.viewModelCommentaire = new ViewModelCommentaire();
             this.Mode = null;
-
+            TextBoxNomClient.IsEnabled = false;
+            TextBoxPrenomClient.IsEnabled = false;
+            TextBoxNomProduit.IsEnabled = false;
+            TextBoxlaCategorieProduit.IsEnabled = false;
+            TextBoxContenuCommentaire.IsEnabled = false;
+            TextBoxNoteCommentaire.IsEnabled = false;
+            DataGridCommentaires.ItemsSource = viewModelCommentaire.getLesCommentaires();
         }
+
+
     }
 }

@@ -1,7 +1,6 @@
 ﻿using CielBijou.Model;
 using CielBijou.ViewModel;
 using System;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -92,8 +91,8 @@ namespace CielBijou.View
                 {
                     try
                     {
-                        viewModelCategories.deleteCategorie(selectedCategory);  
-                        ActualiserDataGrid();  
+                        viewModelCategories.deleteCategorie(selectedCategory);
+                        ActualiserDataGrid();
                         MessageBox.Show("Suppression effectuée", "INFORMATION", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     catch (Exception ex)

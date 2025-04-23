@@ -4,11 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Data.Entity;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CielBijou.ViewModel
 {
@@ -78,7 +74,7 @@ namespace CielBijou.ViewModel
         {
             try
             {
-                uneCategorie = db.categorie.FirstOrDefault(c => c.id == id );
+                uneCategorie = db.categorie.FirstOrDefault(c => c.id == id);
             }
             catch (Exception ex)
             {

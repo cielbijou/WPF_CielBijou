@@ -1,20 +1,8 @@
 ﻿using CielBijou.Model;
 using CielBijou.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.UI.WebControls;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CielBijou.View
 {
@@ -33,7 +21,7 @@ namespace CielBijou.View
             this.Mode = "";
             this.viewModelProduit = new ViewModelProduit();
             this.viewModelCategorie = new ViewModelCategorie();
-            DataGridProduit.ItemsSource =viewModelProduit.getLesProduits();
+            DataGridProduit.ItemsSource = viewModelProduit.getLesProduits();
         }
 
         private produit CreerObjetProduitDepuisTextBox()
@@ -69,7 +57,7 @@ namespace CielBijou.View
         private bool Verif()
         {
             if (string.IsNullOrWhiteSpace(TextBoxId.Text) ||
-                ComboBoxCategorie.SelectedValue ==null ||
+                ComboBoxCategorie.SelectedValue == null ||
                 string.IsNullOrWhiteSpace(TextBoxNomProd.Text) ||
                 string.IsNullOrWhiteSpace(TextBoxDescription.Text) ||
                 string.IsNullOrWhiteSpace(TextBoxStock.Text) ||
@@ -218,9 +206,9 @@ namespace CielBijou.View
             ComboBoxCategorie.IsEnabled = true;
             TextBoxCategorie.Visibility = Visibility.Hidden;
             Mode = "Ajout";
-                TextBoxId.IsEnabled = true;
-                BasculerBoutons();
-                Deverouiller();
+            TextBoxId.IsEnabled = true;
+            BasculerBoutons();
+            Deverouiller();
         }
 
         private void ButtonModifier_Click(object sender, RoutedEventArgs e)
@@ -250,7 +238,7 @@ namespace CielBijou.View
 
                 if (selectedItem is produit unProd)
                 {
-                    int id= unProd.une_categorie_id;
+                    int id = unProd.une_categorie_id;
                     TextBoxCategorie.Text = viewModelCategorie.getNomCategorie(id);
                 }
             }

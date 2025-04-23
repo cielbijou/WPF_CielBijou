@@ -1,12 +1,9 @@
 ﻿using CielBijou.Model;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace CielBijou.ViewModel
@@ -64,7 +61,7 @@ namespace CielBijou.ViewModel
         {
             try
             {
-                lesProduits = db.produit.Where(p=>p.nom_prod.Contains(nom)).ToList();
+                lesProduits = db.produit.Where(p => p.nom_prod.Contains(nom)).ToList();
             }
             catch (Exception ex)
             {

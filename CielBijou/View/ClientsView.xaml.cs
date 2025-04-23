@@ -2,8 +2,6 @@
 using CielBijou.ViewModel; // Remplacer par le namespace de votre ViewModel
 using Microsoft.Win32;
 using System;
-using System.Globalization;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -60,7 +58,7 @@ namespace CielBijou.View
             }
             else
             {*/
-                client.photo = null;
+            client.photo = null;
             //}
 
             return client;
@@ -296,24 +294,24 @@ namespace CielBijou.View
             StringBuilder password = new StringBuilder(length);
 
 
-            password.Append(lowerCase[_random.Next(lowerCase.Length)]); 
-            password.Append(upperCase[_random.Next(upperCase.Length)]);  
-            password.Append(digits[_random.Next(digits.Length)]);  
-            password.Append(specialChars[_random.Next(specialChars.Length)]);  
+            password.Append(lowerCase[_random.Next(lowerCase.Length)]);
+            password.Append(upperCase[_random.Next(upperCase.Length)]);
+            password.Append(digits[_random.Next(digits.Length)]);
+            password.Append(specialChars[_random.Next(specialChars.Length)]);
 
-        
+
             for (int i = password.Length; i < length; i++)
             {
                 password.Append(allChars[_random.Next(allChars.Length)]);
             }
 
-           
+
             string finalPassword = new string(password.ToString().OrderBy(c => _random.Next()).ToArray());
 
             Clipboard.SetText(finalPassword);
             MessageBox.Show($"Mot de passe généré et copié dans le presse-papier : {finalPassword}", "Mot de passe", MessageBoxButton.OK, MessageBoxImage.Information); ;
-            
-        
+
+
         }
 
         private void SaisirMdp_Click(object sender, RoutedEventArgs e)

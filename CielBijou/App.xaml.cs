@@ -1,10 +1,4 @@
 ﻿using CielBijou.Model;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace CielBijou
@@ -14,6 +8,6 @@ namespace CielBijou
     /// </summary>
     public partial class App : Application
     {
-        public client client {  get; set; }
+        public client client { get; set; }
     }
 }

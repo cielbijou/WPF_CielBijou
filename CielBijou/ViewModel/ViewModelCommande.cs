@@ -5,8 +5,6 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace CielBijou.ViewModel
@@ -68,16 +66,16 @@ namespace CielBijou.ViewModel
         {
             ObservableCollection<commande> lesCommandes = new ObservableCollection<commande>();
 
-                try
-                {
-                    lesCommandes = new ObservableCollection<commande>(db.commande.Where(c => c.id.ToString().Contains(id) && c.date_commande.ToString().Contains(date)).ToList());
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Erreur getLesCommandes : " + ex.Message);
-                }
+            try
+            {
+                lesCommandes = new ObservableCollection<commande>(db.commande.Where(c => c.id.ToString().Contains(id) && c.date_commande.ToString().Contains(date)).ToList());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur getLesCommandes : " + ex.Message);
+            }
 
-                return lesCommandes;
+            return lesCommandes;
         }
 
         /// <summary>

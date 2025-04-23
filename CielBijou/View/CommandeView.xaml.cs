@@ -1,21 +1,8 @@
 ﻿using CielBijou.Model;
 using CielBijou.ViewModel;
-using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CielBijou.View
 {
@@ -60,7 +47,7 @@ namespace CielBijou.View
             // Déconnecter l'événement de sélection
             DataGridCommandes.SelectionChanged -= DataGridCommandes_SelectionChanged;
 
-         
+
             string selectedDate = DatePickerFiltreDate.Text;
             DataGridCommandes.ItemsSource = null;
             DataGridCommandes.ItemsSource = viewModelCommande.getLesCommandes(TextBoxFiltreIdCommande.Text, selectedDate);
@@ -109,7 +96,7 @@ namespace CielBijou.View
                     }
                     else
                     {*/
-                        ImagePhoto.Source = null; 
+                    ImagePhoto.Source = null;
                     //}
                 }
                 else
@@ -121,7 +108,7 @@ namespace CielBijou.View
                     TextBoxRoleClient.Text = "";
                     ImagePhoto.Source = null;
                 }
-                
+
             }
         }
 

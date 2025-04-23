@@ -1,19 +1,8 @@
 ﻿using CielBijou.Model;
 using CielBijou.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CielBijou.View
 {
@@ -118,7 +107,7 @@ namespace CielBijou.View
             DataGridPromotions.SelectedIndex = -1;
             BasculerBoutons();
             DeverouillerVerrouiller();
-            Mode = "Ajout";  
+            Mode = "Ajout";
             TextBoxId.IsEnabled = true;
             TextBoxId.Focus();
         }
@@ -161,7 +150,7 @@ namespace CielBijou.View
         // Fonction de vérification des champs saisis
         private bool Verif()
         {
-            if (string.IsNullOrWhiteSpace(TextBoxId.Text) ||ComboBoxCategorie.SelectedItem ==null || !DatePickerDebutPromo.SelectedDate.HasValue || !DatePickerFinPromo.SelectedDate.HasValue || string.IsNullOrWhiteSpace(TextBoxRemise.Text))
+            if (string.IsNullOrWhiteSpace(TextBoxId.Text) || ComboBoxCategorie.SelectedItem == null || !DatePickerDebutPromo.SelectedDate.HasValue || !DatePickerFinPromo.SelectedDate.HasValue || string.IsNullOrWhiteSpace(TextBoxRemise.Text))
             {
                 MessageBox.Show("Veuillez compléter tous les champs", "AVERTISSEMENT", MessageBoxButton.OK, MessageBoxImage.Stop);
                 return false;
@@ -176,10 +165,10 @@ namespace CielBijou.View
                 ComboBoxCategorie.Visibility = Visibility.Visible;
                 ComboBoxCategorie.IsEnabled = true;
                 TextBoxLibelle.Visibility = Visibility.Hidden;
-                Mode = "Modification";  
+                Mode = "Modification";
                 BasculerBoutons();
                 DeverouillerVerrouiller();
-                TextBoxId.IsEnabled = false; 
+                TextBoxId.IsEnabled = false;
             }
             else
             {
