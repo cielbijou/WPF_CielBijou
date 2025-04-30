@@ -19,7 +19,7 @@
     <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="photo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="photo" Type="Binary" Nullable="true" MaxLength="Max" FixedLength="false" />
     <NavigationProperty Name="commentaire" Relationship="Self.FK_67F068BC72632DFF" FromRole="client" ToRole="commentaire" />
     <NavigationProperty Name="commande" Relationship="Self.FK_6EEAA67D72632DFF" FromRole="client" ToRole="commande" />
   </EntityType>

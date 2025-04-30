@@ -212,7 +212,7 @@
 
             <Label x:Name="LabelPhoto" Grid.Column="0" Grid.Row="6" Content="Photo" FontSize="15"/>
             <Button x:Name="ButtonPacourirPhoto" Grid.Column="1" Grid.Row="6" Content="Ajouter/Modifier la photo"  Click="ButtonPacourirPhoto_Click" Width="200" Height="20" Margin="80,16,20,14"/>
-            <Image x:Name="ImagePhoto" Grid.Column="1" Grid.Row="6" Source="{Binding photo}" Margin="10,0,0,0" MinWidth="50" MaxWidth="50" MinHeight="50" MaxHeight="50" HorizontalAlignment="Left"/>
+            <Image x:Name="ImagePhoto" Grid.Column="1" Grid.Row="5" Source="{Binding photo}" Margin="10,42,0,0" MinWidth="50" MaxWidth="50" MinHeight="50" MaxHeight="50" HorizontalAlignment="Left" Grid.RowSpan="2" Width="14"/>
         </Grid>
     </Grid>
 

@@ -109,15 +109,16 @@ namespace CielBijou.ViewModel
             return "";
         }
 
-        public String getPhtot(int id)
+        public byte[] GetPhoto(int id)
         {
             var idCli = db.client.FirstOrDefault(c => c.id == id);
-            if (idCli != null)
+            if (idCli != null && idCli.photo != null)
             {
                 return idCli.photo;
             }
             return null;
         }
+
 
 
         public void getLesClients(int idClient)

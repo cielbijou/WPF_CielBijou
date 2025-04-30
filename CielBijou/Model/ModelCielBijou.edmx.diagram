@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="cielbijouModel.categorie" Width="1.5" PointX="4.875" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="cielbijouModel.client" Width="1.5" PointX="4.625" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="cielbijouModel.commande" Width="1.5" PointX="7.125" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="cielbijouModel.commentaire" Width="1.5" PointX="2.5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="cielbijouModel.commentaire" Width="2" PointX="2" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="cielbijouModel.ligne_commande" Width="1.5" PointX="7" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="cielbijouModel.produit" Width="1.5" PointX="2.625" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="cielbijouModel.promotion" Width="1.5" PointX="8.125" PointY="7.75" IsExpanded="true" />

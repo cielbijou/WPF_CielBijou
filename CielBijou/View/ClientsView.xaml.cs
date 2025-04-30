@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using System.IO;
 
 namespace CielBijou.View
 {
@@ -45,7 +46,7 @@ namespace CielBijou.View
             client.password = TextBoxMdp.Text;
             client.roles = ComboBoxGroupe.SelectedValue?.ToString();
 
-            /*if (ImagePhoto.Source != null)
+            if(ImagePhoto.Source != null)
             {
                 BitmapEncoder encoder = new JpegBitmapEncoder();
                 encoder.Frames.Add(BitmapFrame.Create(ImagePhoto.Source as BitmapSource));
@@ -57,9 +58,9 @@ namespace CielBijou.View
                 }
             }
             else
-            {*/
-            client.photo = null;
-            //}
+            {
+                client.photo = null;
+            }
 
             return client;
         }

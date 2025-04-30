@@ -48,7 +48,7 @@ namespace CielBijou.ViewModel
         {
             try
             {
-                lesCommentaires = db.commentaire.ToList();
+                lesCommentaires = db.commentaire.OrderByDescending(c => c.date_commentaire).ToList();
             }
             catch (Exception ex)
             {
